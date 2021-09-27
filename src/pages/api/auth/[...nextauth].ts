@@ -13,6 +13,7 @@ export default NextAuth({
       scope: 'read:user'
     }),
   ],
+  secret: process.env.NEXT_AUTH_SECRET_KEY,
   callbacks: {
     async session(session) {
       try {
@@ -38,7 +39,7 @@ export default NextAuth({
             ])
           )
         )
-  
+
         return {
           ...session,
           activeSubscription: userActiveSubscription
